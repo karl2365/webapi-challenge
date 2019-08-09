@@ -11,8 +11,7 @@ server.use(express.json());
 
 server.get('/chores', (req, res) => {
     const queryReturn = [];
-    console.log(req.query.completed)
-    const chores = db.getChores()
+    const chores = db.getChores();
         if (chores.length === 0) {
             res.status(404).json({error: "The array is empty!"});
         }
@@ -36,7 +35,7 @@ server.get('/chores', (req, res) => {
             res.status(200).json(queryReturn);
         }
         else {
-            res.status(500).json({error: "Error accessing database."})
+            res.status(500).json({error: "Error accessing database."});
         }
     
 });
@@ -58,7 +57,7 @@ server.post('/chores', (req, res) => {
         res.status(201).json({inserted: "new chore inserted"});
 
     }
-})
+});
 
 server.put('/chores/:id', (req, res) => {
     if (!req.body){
@@ -78,8 +77,6 @@ server.put('/chores/:id', (req, res) => {
     for (let i = 0; i < chores.length; i++){
         cid.push(chores[i].id.toString());
     }
-    console.log(cid);
-    console.log(req.params.id)
     if (cid.includes(req.params.id.toString())){
         const returnedChore = db.modifyChore(req.params.id, req.body);
         res.status(201).json(returnedChore);
@@ -96,16 +93,14 @@ server.delete('/chores/:id', (req, res) => {
     for (let i = 0; i < chores.length; i++){
         cid.push(chores[i].id.toString());
     }
-    console.log(cid);
-    console.log(req.params.id)
     if (cid.includes(req.params.id.toString())){
-        const removedChore = db.removeChore(req.params.id)
+        const removedChore = db.removeChore(req.params.id);
         res.status(200).json({removed: `Chore: ${removedChore}`});
     }
     else {
         res.status(400).json({error: "That chore id does not exist"});
     }
-})
+});
 
 
 

@@ -16,7 +16,6 @@ const people = [
         name: "Katie"
     }
 ];
-let peopleId = 4;
 
 let chores = [
     {
@@ -62,14 +61,14 @@ const removeChore = id => {
     const temp = [];
     for (let i = 0; i < chores.length; i++){
         if (chores[i].id !== id){
-            temp.push(chores[i])
+            temp.push(chores[i]);
         }
     }
     chores = [];
     for (let i = 0; i < temp.length; i++){
         chores.push(temp[i]);
     }
-    return `Chore ${id} was removed.`
+    return `Chore ${id} was removed.`;
 }
 
 module.exports = {getPeople, getChores, insertChore, modifyChore, removeChore};
