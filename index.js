@@ -10,18 +10,35 @@ server.use(express.json());
 
 
 server.get('/chores', (req, res) => {
-    
-   const chores = db.getChores()
-          if (chores.length === 0) {
+    const queryReturn = [];
+    const chores = db.getChores()
+        if (chores.length === 0) {
             res.status(404).json({error: "The array is empty!"});
         }
-        else {
+        else if (!req.query.completed) {
             res.status(200).json(chores);
         }
-    const method = req.method;
-    const url = req.url;
-    console.log(`you made a ${method} request to ${url} on [${new Date().toISOString()}]`);
-})
+        else if (req.query.completed === false){
+            for (let i = 0; i < chores.length; i++){
+                if (chores[i].completed === false){
+                    queryReturn.push(chores[i]);
+                }
+            }
+            res.status(200).json(queryReturn);
+        }
+        else if (req.query.completed === true) {
+            for (let i = 0; i < chores.length; i++){
+                if (chores[i].completed === true){
+                    queryReturn.push(chores[i]);
+                }
+            }
+            res.status(200).json(queryReturn);
+        }
+        else {
+            res.status(500).json({error: "Error accessing database."})
+        }
+    
+});
 
 server.post('/chores', (req, res) => {
     if (!req.body){
