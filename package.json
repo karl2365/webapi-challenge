@@ -1,0 +1,30 @@
+{
+  "name": "webapi-challenge",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "gitignore": "^0.6.0",
+    "node": "^12.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karl2365/webapi-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karl2365/webapi-challenge/issues"
+  },
+  "homepage": "https://github.com/karl2365/webapi-challenge#readme"
+}

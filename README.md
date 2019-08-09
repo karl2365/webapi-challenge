@@ -39,14 +39,25 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+    
+    Express is a framework for working with node.js
+    Express.Router that allows us to split our code into separate files.
 
 - [ ] What is Express Middleware?
 
+    Express middleware are functions that perform operations before the (req, res), they can but do not have to alter the req.
+
 - [ ] How can a client send data to an API?
+
+    Query string, headers, req.body, params
 
 - [ ] What can the API return to help clients know if a request was successful?
 
+    Status codes
+
 - [ ] What Express feature can we use to partition an application into sub-applications?
+
+    Router/ routes
 
 ## Minimum Viable Product
 
