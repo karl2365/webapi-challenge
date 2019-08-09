@@ -11,6 +11,7 @@ server.use(express.json());
 
 server.get('/chores', (req, res) => {
     const queryReturn = [];
+    console.log(req.query.completed)
     const chores = db.getChores()
         if (chores.length === 0) {
             res.status(404).json({error: "The array is empty!"});
@@ -18,7 +19,7 @@ server.get('/chores', (req, res) => {
         else if (!req.query.completed) {
             res.status(200).json(chores);
         }
-        else if (req.query.completed === false){
+        else if (req.query.completed === "false"){
             for (let i = 0; i < chores.length; i++){
                 if (chores[i].completed === false){
                     queryReturn.push(chores[i]);
@@ -26,7 +27,7 @@ server.get('/chores', (req, res) => {
             }
             res.status(200).json(queryReturn);
         }
-        else if (req.query.completed === true) {
+        else if (req.query.completed === "true") {
             for (let i = 0; i < chores.length; i++){
                 if (chores[i].completed === true){
                     queryReturn.push(chores[i]);
@@ -75,11 +76,11 @@ server.put('/chores/:id', (req, res) => {
     const chores = db.getChores();
 
     for (let i = 0; i < chores.length; i++){
-        cid.push(chores[i].id);
+        cid.push(chores[i].id.toString());
     }
     console.log(cid);
     console.log(req.params.id)
-    if (cid.includes(req.params.id)){
+    if (cid.includes(req.params.id.toString())){
         const returnedChore = db.modifyChore(req.params.id, req.body);
         res.status(201).json(returnedChore);
     }
@@ -93,13 +94,13 @@ server.delete('/chores/:id', (req, res) => {
     const chores = db.getChores();
     const cid = []
     for (let i = 0; i < chores.length; i++){
-        cid.push(chores[i].id);
+        cid.push(chores[i].id.toString());
     }
     console.log(cid);
     console.log(req.params.id)
-    if (cid.includes(req.params.id)){
+    if (cid.includes(req.params.id.toString())){
         const removedChore = db.removeChore(req.params.id)
-        res.status(200).json({removed: `Chore: ${removedChore}`})
+        res.status(200).json({removed: `Chore: ${removedChore}`});
     }
     else {
         res.status(400).json({error: "That chore id does not exist"});
