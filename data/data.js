@@ -60,7 +60,7 @@ const modifyChore = (id, changes) => {
 const removeChore = id => {
     const temp = [];
     for (let i = 0; i < chores.length; i++){
-        if (chores[i].id !== id){
+        if (chores[i].id != id){
             temp.push(chores[i]);
         }
     }
