@@ -40,6 +40,28 @@ server.get('/chores', (req, res) => {
     
 });
 
+server.get('/chores/person/:id', (req, res) => {
+    const people = db.getPeople();
+    const person = req.params.id.toString();
+    const ids = []
+    for (let i = 0; i < people.length; i++){
+        ids.push(people[i].id.toString());
+    }
+    if (ids.includes(person)){
+        const chores = db.getChores();
+        const retChores = [];
+        for (let i = 0; i < chores.length; i++){
+            if (chores[i].assignedTo.toString() === person){
+                retChores.push(chores[i]);
+            }
+        }
+        res.status(200).json(retChores);
+    }
+    else {
+        res.status(404).json({message: "Person with that ID not found in database."});
+    }
+});
+
 server.post('/chores', (req, res) => {
     if (!req.body){
         res.status(400).json({error: "You must send a new chore!"});
