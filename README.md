@@ -48,4 +48,4 @@ Copyright © 2019 [Karl Beksa](https://github.com/karl2365).<br />
 This project is [ISC](https://github.com/karl2365/webapi-challenge/blob/master/LICENSE) licensed.
 
 ***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+_ This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
